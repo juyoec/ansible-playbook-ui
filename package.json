@@ -1,6 +1,6 @@
 {
   "name": "ansible-playbook-ui",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "play ansible with ui",
   "author": { "name": "juyoec", "email": "juyoec@gmail.com", "url":"https://www.facebook.com/juyoec"},
   "contributors": [
@@ -22,7 +22,10 @@
     "debug": "~2.2.0",
     "express": "~4.13.4",
     "morgan": "~1.7.0",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "child_process": "~1.0.2",
+    "fs": "~0.0.2",
+    "hbs": "~4.0.0"
   },
   "engines": { "node": ">= 0.4.0" },
   "licenses": [ {
