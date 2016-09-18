@@ -1,0 +1,4 @@
+- hosts: localhost
+  vars:
+  tasks:
+  - ping:

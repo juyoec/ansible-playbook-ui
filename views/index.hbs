@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta charset="utf-8" />
+    <title>Ansible-PlaybookUI</title>
+
+    <meta name="description" content="overview &amp; stats" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/assets/css/ace-fonts.css" />
+    <link rel="stylesheet" href="/assets/css/ace.min.css" id="main-ace-style" />
+
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="/assets/css/ace-part2.min.css" />
+    <![endif]-->
+    <link rel="stylesheet" href="/assets/css/ace-skins.min.css" />
+    <link rel="stylesheet" href="/assets/css/ace-rtl.min.css" />
+
+    <!--[if lte IE 9]>
+    <link rel="stylesheet" href="/assets/css/ace-ie.min.css" />
+    <![endif]-->
+    <script src="/assets/js/ace-extra.min.js"></script>
+    <!--[if lte IE 8]>
+    <script src="/assets/js/html5shiv.min.js"></script>
+    <script src="/assets/js/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body class="no-skin">
+<!-- #section:basics/navbar.layout -->
+<div id="navbar" class="navbar navbar-default">
+    <script type="text/javascript">
+        try{ace.settings.check('navbar' , 'fixed')}catch(e){}
+    </script>
+
+    <div class="navbar-container" id="navbar-container">
+        <div class="navbar-header pull-left">
+            <a href="#" class="navbar-brand">
+                <small>
+                    <i class="fa fa-leaf"></i>
+                    Ansible-PlaybookUI
+                </small>
+            </a>
+        </div>
+    </div><!-- /.navbar-container -->
+</div>
+
+<!-- /section:basics/navbar.layout -->
+<div class="main-container" id="main-container">
+    <script type="text/javascript">
+        try{ace.settings.check('main-container' , 'fixed')}catch(e){}
+    </script>
+    <!-- /section:basics/sidebar -->
+    <div class="main-content">
+        <div class="page-content">
+
+        <div class="row">
+            <div class="col-sm-6">
+                <!-- left start -->
+                <div class="tabbable tabs-left">
+                    <ul class="nav nav-tabs" id="filehead">
+{{#each files}}
+    <li id="li{{rename}}">
+        <a data-toggle="tab" href="#content{{rename}}">
+            {{#if type}}
+                <img class="normal-icon" style="margin-left: -14px;margin-top: -12px;" width="32" alt="AWS Simple Icons AWS Cloud" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/AWS_Simple_Icons_AWS_Cloud.svg/64px-AWS_Simple_Icons_AWS_Cloud.svg.png"/>
+            {{else}}
+                <i class="blue ace-icon fa fa-user bigger-110"></i>
+            {{/if}}
+            {{name}}
+        </a>
+    </li>
+{{/each}}
+                    </ul>
+
+                    <div class="tab-content" id="filecontent">
+{{#each files}}
+    <div id="content{{rename}}" class="tab-pane" data-rename="{{rename}}">
+    </div>
+{{/each}}
+                    </div>
+                </div>
+                <!-- left end -->
+            </div>
+            <div class="vspace-16-sm"></div>
+            <div class="col-sm-6">
+                <div class="dd" id="mainyml">
+                    <ol class="dd-list">
+                    {{#each files}}
+                        <li class="dd-item dd2-item" data-id="{{name}}">
+                            <div class="dd-handle dd2-handle">
+                                {{#if type}}
+                                    <img class="normal-icon" style="margin-left: -14px;margin-top: -12px;" width="64" alt="AWS Simple Icons AWS Cloud" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/AWS_Simple_Icons_AWS_Cloud.svg/64px-AWS_Simple_Icons_AWS_Cloud.svg.png"/>
+                                {{else}}
+                                    <i class="normal-icon ace-icon fa fa-bars blue bigger-130"></i>
+                                {{/if}}
+
+
+                                <i class="drag-icon ace-icon fa fa-arrows bigger-125"></i>
+                            </div>
+                            <div class="dd2-content">{{name}}
+                                <div class="pull-right action-buttons">
+                                    <a class="green run">
+                                        <i class="ace-icon fa fa-share bigger-130"></i>
+                                    </a>
+                                    <a class="blue pencil">
+                                        <i class="ace-icon fa fa-pencil bigger-130"></i>
+                                    </a>
+
+                                    <a class="red trash">
+                                        <i class="ace-icon fa fa-trash-o bigger-130"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+
+                    {{/each}}
+                </ol>
+<!-- editor start -->
+                    <div id="editor" class="widget-box widget-color-blue">
+                        <div class="widget-header widget-header-small">
+                            <input type="text" id="ymlname" placeholder="input yml name" class="form-control">
+                        </div>
+
+                        <div class="widget-body">
+                            <div class="widget-main no-padding">
+													<textarea class="md-input" name="content" data-provide="markdown" data-iconlibrary="fa" rows="10">
+                                                    </textarea>
+                            </div>
+
+                            <div class="widget-toolbox padding-4 clearfix">
+                                <div class="btn-group pull-left">
+                                    <button id="editreset" class="btn btn-sm btn-info">
+                                        <i class="ace-icon fa fa-times bigger-125"></i>
+                                        Cancel
+                                    </button>
+                                </div>
+
+                                <div class="btn-group pull-right">
+                                    <button id="editsave" class="btn btn-sm btn-purple">
+                                        <i class="ace-icon fa fa-floppy-o bigger-125"></i>
+                                        Save
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- editor end -->
+                </div>
+            </div>
+        </div>
+        </div>
+    </div><!-- /.main-content -->
+
+    <div class="footer">
+        <div class="footer-inner">
+            <!-- #section:basics/footer -->
+            <div class="footer-content">
+						<span class="bigger-120">
+							<span class="blue bolder">Ace</span>
+							Application &copy; 2013-2014
+						</span>
+
+                &nbsp; &nbsp;
+						<span class="action-buttons">
+							<a href="#">
+                                <i class="ace-icon fa fa-twitter-square light-blue bigger-150"></i>
+                            </a>
+
+							<a href="#">
+                                <i class="ace-icon fa fa-facebook-square text-primary bigger-150"></i>
+                            </a>
+
+							<a href="#">
+                                <i class="ace-icon fa fa-rss-square orange bigger-150"></i>
+                            </a>
+						</span>
+            </div>
+
+            <!-- /section:basics/footer -->
+        </div>
+    </div>
+</div><!-- /.main-container -->
+<script src="/assets/js/jquery.min.js"></script>
+<script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/jquery-ui.custom.min.js"></script>
+<script src="/assets/js/jquery.ui.touch-punch.min.js"></script>
+<!--[if lte IE 8]>
+<script src="/assets/js/excanvas.min.js"></script>
+<![endif]-->
+<script src="/assets/js/jquery.nestable.min.js"></script>
+<script src="/assets/js/ace-elements.min.js"></script>
+<script src="/assets/js/ace.min.js"></script>
+
+<script src="/js/index.js"></script>
+</body>
+</html>
