@@ -3,6 +3,8 @@ AnsiblePlaybook UI
 
 ref http://docs.ansible.com/ansible/intro.html
 
-* git clone
-* node bin/www
-* connect localhost:3000
+```
+npm install ansible-playbook-ui
+node bin/www
+```
+* connect http://localhost:3000/
