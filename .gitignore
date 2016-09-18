@@ -29,4 +29,6 @@ node_modules/
 .DS_Store
 npm-debug.log
 *.css.map
-ec2*
+*ec2*
+*aws*
+hosts
