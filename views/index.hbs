@@ -62,16 +62,19 @@
                 <div class="tabbable tabs-left">
                     <ul class="nav nav-tabs" id="filehead">
 {{#each files}}
-    <li id="li{{rename}}">
-        <a data-toggle="tab" href="#content{{rename}}">
-            {{#if type}}
-                <img class="normal-icon" style="margin-left: -14px;margin-top: -12px;" width="32" alt="AWS Simple Icons AWS Cloud" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/AWS_Simple_Icons_AWS_Cloud.svg/64px-AWS_Simple_Icons_AWS_Cloud.svg.png"/>
-            {{else}}
-                <i class="blue ace-icon fa fa-user bigger-110"></i>
-            {{/if}}
-            {{name}}
-        </a>
-    </li>
+    {{#if hosts}}
+    {{else}}
+        <li id="li{{rename}}">
+            <a data-toggle="tab" href="#content{{rename}}">
+                {{#if aws}}
+                    <img class="normal-icon" style="margin-left: -14px;margin-top: -12px;" width="32" alt="AWS Simple Icons AWS Cloud" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/AWS_Simple_Icons_AWS_Cloud.svg/64px-AWS_Simple_Icons_AWS_Cloud.svg.png"/>
+                {{else}}
+                    <i class="blue ace-icon fa fa-user bigger-110"></i>
+                {{/if}}
+                {{name}}
+            </a>
+        </li>
+    {{/if}}
 {{/each}}
                     </ul>
 
@@ -91,8 +94,10 @@
                     {{#each files}}
                         <li class="dd-item dd2-item" data-id="{{name}}">
                             <div class="dd-handle dd2-handle">
-                                {{#if type}}
+                                {{#if aws}}
                                     <img class="normal-icon" style="margin-left: -14px;margin-top: -12px;" width="64" alt="AWS Simple Icons AWS Cloud" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5c/AWS_Simple_Icons_AWS_Cloud.svg/64px-AWS_Simple_Icons_AWS_Cloud.svg.png"/>
+                                {{else if hosts}}
+                                    <i class="normal-icon ace-icon fa fa-cog blue bigger-130"></i>
                                 {{else}}
                                     <i class="normal-icon ace-icon fa fa-bars blue bigger-130"></i>
                                 {{/if}}
@@ -126,8 +131,8 @@
 
                         <div class="widget-body">
                             <div class="widget-main no-padding">
-													<textarea class="md-input" name="content" data-provide="markdown" data-iconlibrary="fa" rows="10">
-                                                    </textarea>
+                                <textarea class="md-input" style="width:100%" name="content" data-provide="markdown" data-iconlibrary="fa" rows="10">
+                                </textarea>
                             </div>
 
                             <div class="widget-toolbox padding-4 clearfix">

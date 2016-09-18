@@ -9,8 +9,10 @@ router.get('/', function(req, res, next) {
     var fileItems = [];
     for (var i=0; i< files.length; i++) {
         var base = { name: files[i], rename: files[i].replace('.', '_')};
-        if (files[i].indexOf('ec2') >= 0) {
-            base.type = true;
+        if (files[i].indexOf('ec2') >= 0 || files[i].indexOf('aws') >= 0) {
+            base.aws = true;
+        } else if (files[i].indexOf('hosts') >= 0) {
+            base.hosts = true;
         }
         fileItems.push(base);
     }
