@@ -1,6 +1,6 @@
 {
   "name": "ansible-playbook-ui",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "play ansible with ui",
   "author": { "name": "juyoec", "email": "juyoec@gmail.com", "url":"https://www.facebook.com/juyoec"},
   "contributors": [
